@@ -3,7 +3,9 @@ const app = express()
 const axios = require('axios')
 const cheerio = require('cheerio')  
 const port = 3000
+const cors = require('cors')
 
+app.use(cors())
 app.get('/tracuu/:sbd',async (req, res) => {
     const  {data } = await axios.get(`https://vietnamnet.vn/giao-duc/diem-thi/tra-cuu-diem-thi-tot-nghiep-thpt/2022/${req.params.sbd}.html`)
     let $ = cheerio.load(data)
